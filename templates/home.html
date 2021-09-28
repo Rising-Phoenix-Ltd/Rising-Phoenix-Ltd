@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Rising-Pheonix</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content=" #a00">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google-site-verification" content="gsARYKN1Cv_FMjMreIZNFgclsDYx9BROy0rKaeSFOtA" />
+  <!-- Custom Styles -->
+  <link rel="icon" type="image/jpeg" href="static/img/logo.jpeg">
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/mobile.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h1>
+        <span>R</span>
+        <span>i</span>
+        <span>s</span>
+        <span>i</span>
+        <span>n</span>
+        <span>g</span>
+      </h1>
+      <h1>
+        <span>P</span>
+        <span>h</span>
+        <span>o</span>
+        <span>e</span>
+        <span>n</span>
+        <span>i</span>
+        <span>x</span>
+      </h1>
+    </div>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="/feature">Features</a>
+      <a href="/join">Join us</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+    {% include 'login_button.html' %}
+  </header>
+  <!--   this is for main content -->
+  <section class="container">
+    <div class="box game">
+      <h2>Gaming Community</h2>
+      <img src="https://wallpapercave.com/wp/wp5053569.jpg">
+      <p>Our Gaming Community is for Games lover who loves playing trending games. you can also make team to play your favourite games.</p>
+      <a href="/join" class="btn"> Join us</a>
+    </div>
+    <div class="box anime">
+      <h2>Anime Community</h2>
+      <img src="https://wallpaperaccess.com/full/21612.jpg">
+      <p> This Community is for Man of Culture who love to discuss about their favourite anime, manga, manhwa and manhua. you will never going to be empty when are in this group.</p>
+      <a href="/feature" class="btn"> Watch Now</a>
+    </div>
+    <div class="box league">
+      <h2>Competitive League</h2>
+      <img src="https://image.freepik.com/free-vector/battle-versus-vs-background-sports-game_1017-23766.jpg">
+      <p>Our Competitive Community accept exceptionally talented players of club to our Competitive team for tournaments. <span class="highlight"> not yet available </span></p>
+      <a href="/join" class="btn"> Enter Now </a>
+    </div>
+  </section>
+  <div class="buzz">
+    <button onclick="document.location.href='join'" type="submit" class="btn">Join Us</button>
+  </div>
+  {% extends 'footer.html' %}
+</body>
+
+</html>

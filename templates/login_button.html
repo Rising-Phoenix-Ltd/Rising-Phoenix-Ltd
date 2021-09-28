@@ -1,0 +1,23 @@
+<div class="login">
+      {% if current_user.is_authenticated: %}
+      <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
+      {% else: %}
+      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+      <div class="form" id="form">
+        <span class="fas fa-times cancel" id="hidebtn"></span>
+        <form id="boxsign" method="POST" action="{{url_for('login_spl')}}" accept-charset="utf-8">
+          <h2> Login </h2>
+          <p> Don't have an Account? <a href="{{url_for('register')}}"> Sign in</a></p>
+          <div class="field">
+            <input type="email" id="email" name="email" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please Complete your email address" required />
+            <label for="email">Email ID</label>
+          </div>
+          <div class="field">
+            <input type="password" id="password" name="password" placeholder=" " required pattern=".{8,}" title="Please Enter Correct Password" />
+            <label for="password">Password</label>
+          </div>
+          <button class="btn" type="submit"><span class="fas fa-user"></span> Login</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>

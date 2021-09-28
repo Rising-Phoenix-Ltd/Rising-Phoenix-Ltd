@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+
+@media screen and (max-width: 600px) {
+
+  footer {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  footer .footNav a {
+    font-size: 28px;
+    margin: 0 12px;
+  }
+
+  header {
+    flex-flow: column nowrap;
+    text-align: center;
+    justify-content: stretch;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  header .logo h1 {
+    font-size: 30px;
+    padding: 0 5px;
+    letter-spacing: -4px;
+  }
+
+  header nav {
+    align-self: stretch;
+  }
+
+  header nav a {
+    font-size: 12px;
+    letter-spacing: 0;
+    margin: 0 4%;
+    padding: 2px;
+  }
+
+  header nav a:hover:not(.btn),
+  nav a.active {
+    border-bottom: 2px solid #c00;
+  }
+
+  header .login .btn {
+    font-size: 12px;
+  }
+
+  header .login .form .cancel {
+    font-size: 18px;
+    padding: 1px 4px;
+    top: 10px;
+    right: 8%;
+  }
+
+  header .login .form {
+    top: 140px;
+  }
+
+  header .login .form #boxsign {
+    width: 90vw;
+    padding: 10px 10%;
+  }
+
+
+  /* this is for main */
+
+  .container {
+    display: grid;
+    grid-template: auto / 1fr;
+    margin: 0;
+  }
+
+  .container .box {
+    font-size: 0.75rem;
+    padding: 10px 8%;
+    width: unset;
+    margin: 0;
+  }
+
+  .container .box:hover {
+    margin: 0 3%;
+    padding: 10px 5%;
+  }
+
+  .container .box img {
+    height: 168px;
+  }
+
+  .container .box .btn {
+    font-size: 14px;
+  }
+
+  .buzz {
+    margin: 0;
+  }
+
+
+  /* this is for login page */
+
+  .form #boxsign {
+    width: 90vw;
+    padding: 20px 10%;
+  }
+
+  .form #boxsign .field input {
+    width: 90%;
+  }
+
+  .form #boxsign .btn {
+    font-size: 0.9rem;
+  }
+
+
+
+  /* this is for join page */
+
+  .join .headBox {
+    height: 180px;
+    border-bottom-left-radius: 50% 60%;
+  }
+
+  .join .headBox h2 {
+    font-size: 20px;
+  }
+
+  .join .headBox .btn {
+    font-size: 14px;
+    padding: 4px 10px;
+  }
+
+  .join .listBox .list {
+    font-size: 12px;
+    flex: 1 0 40%;
+  }
+
+  .join .listBox .list div {
+    width: 49px;
+    height: 49px;
+    font-size: 16px;
+  }
+
+  /*   this is for about us page */
+  .blockHead h2 {
+    font-size: 24px;
+  }
+
+  .blockHead p {
+    font-size: 16px;
+  }
+
+  .block {
+    grid-template-columns: 1fr;
+    padding: 10px 0;
+  }
+
+  .block .about .aboutList {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .block .about .aboutList .box h3 {
+    font-size: 18px;
+  }
+
+  .block .about .aboutList .box p {
+    font-size: 14px;
+  }
+
+
+
+  /* this is for contact us page */
+  .block .contact {
+    width: initial;
+    padding: 20px 0;
+    place-self: unset;
+    margin: 0 10px;
+  }
+
+  .block .contact h2 {
+    font-size: 24px;
+  }
+
+  .block .contact p {
+    font-size: 16px;
+  }
+
+  .block .contact .msg {
+    width: 80%;
+  }
+
+  .block .contact .msg .field {
+    padding: 16px 0 0;
+  }
+
+  .msg .field label {
+    font-size: 14px;
+    transform: translateY(45%);
+  }
+
+  .msg .field [id] {
+    font-size: 14px;
+  }
+
+  .block .contact .msg .btn {
+    font-size: 16px;
+  }
+
+
+  /*  this is for feature page */
+  .feature .title {
+    font-size: 20px;
+  }
+  .feature .list {
+    flex-flow: column;
+  }
+
+  .feature .list iframe {
+    flex: 0 1 0;
+    width: 100%;
+  }
+
+  .feature .list .eps {
+    flex: 0 0 0;
+    width: 100%;
+    grid-gap: 10px 0;
+    grid-template: auto / repeat(4, 1fr);
+  }
+  .feature .list .eps [href] {
+    padding: 5px 14px;
+  }
+}

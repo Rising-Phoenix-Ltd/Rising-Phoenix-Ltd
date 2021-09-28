@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <title> Rising-Pheonix</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme-color" content=" darkred">
+   <meta name="robots" content="index, follow">
+   <meta name="googlebot" content="index, follow">
+   <meta name="google-site-verification" content="gsARYKN1Cv_FMjMreIZNFgclsDYx9BROy0rKaeSFOtA" />
+   <!-- Custom Styles -->
+   <link rel="icon" type="image/jpeg" href="static/img/logo.jpeg">
+   <link rel="stylesheet" href="static/css/main.css">
+   <link rel="stylesheet" href="static/css/mobile.css" />
+  
+ </head>
+
+ <body>
+   <header>
+     <div class="logo">
+       <h1>
+         <span>R</span>
+         <span>i</span>
+         <span>s</span>
+         <span>i</span>
+         <span>n</span>
+         <span>g</span>
+       </h1>
+       <h1>
+         <span>P</span>
+         <span>h</span>
+         <span>o</span>
+         <span>e</span>
+         <span>n</span>
+         <span>i</span>
+         <span>x</span>
+       </h1>
+     </div>
+     <nav>
+       <a href="/">Home</a>
+       <a href="#" class="active">Features</a>
+       <a href="/join">Join us</a>
+       <a href="/privacy">Privacy</a>
+     </nav>
+     {% include 'login_button.html' %}
+   </header>
+   <section class="feature">
+     <h2 class="title">Popular Anime 2021</h2>
+     <div class="list">
+       <iframe id="player"  src="https://youtube.com/embed/playlist?list=PLwQNlb4Bfw026TZGHgfkqKJeVvKGB-D4o" name="somename" allowfullscreen></iframe>
+       <div class="eps">
+         <a href="https://www.youtube.com/embed/dJlrYEdw3bg" target="somename">EP 1</a>
+         <a href="https://www.youtube.com/embed/JF-laAVYAGA" target="somename">EP 2</a>
+         <a href="https://www.youtube.com/embed/RMlx1vRXhSk" target="somename">EP 3</a>
+         <a href="https://youtube.com/embed/l410dyHJ5AE" target="somename">EP 4</a>
+         <a href="https://youtube.com/embed/y9lmMvIuKTU" target="somename">EP 5</a>
+         <a href="https://youtube.com/embed/JO365SMkrW8" target="somename">EP 6</a>
+         <a href="https://youtube.com/embed/playlist?list=PLwQNlb4Bfw026TZGHgfkqKJeVvKGB-D4o" target="somename">EP 7</a>
+         <a href="https://www.youtube.com/embed/yrOXQzDw43A" target="somename">EP 8</a>
+       </div>
+       <div class="summary">
+       </div>
+     </div>
+   </section>
+   {% extends 'footer.html' %}
+ </body>
+
+ </html>

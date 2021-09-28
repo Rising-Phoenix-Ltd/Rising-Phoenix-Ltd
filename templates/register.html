@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="darkred">
+  <title>Sign in</title>
+  <!-- Custom Styles -->
+  <script src="https://kit.fontawesome.com/37a20c2b2d.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/jpeg" href="static/img/logo.jpeg">
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/mobile.css" />
+</head>
+
+<body>
+  <div class="form">
+    <!-- this is for sign in  -->
+    
+    <form id="boxsign" method="POST" action="{{ url_for('register') }}" accept-charset="utf-8" >
+      <h2> Create Account </h2>
+      <p>Already have an account? <a href="/login"> Login</a></p>
+      
+      <div class="field">
+        <input type="text" id="username" name="username" placeholder=" " title="Username must be atleast 4 characters" pattern=".{4,}" required />
+        <label for="username">Username</label>
+      </div>
+      
+      <div class="field">
+        <input type="email" id="email" name="email" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please Complete your email address" required />
+        <label for="email">Email ID</label>
+      </div>
+      
+      <div class="field">
+        <input type="password" onchange="validatePassword();" name="password" placeholder=" " id="password" pattern=".{8,}" title="Your password must be atleast 8 characters" required/>
+        <label for="password">Password</label>
+      </div>
+
+      <div class="field">
+        <input type="password" name="password" id="confirm_password" placeholder=" " onkeyup="validatePassword();" required />
+        <label for="confirm_password">Confirm Password</label>
+      </div>
+      <button class="btn" type="submit"><span class="fa fa-user"></span> Sign in</button>
+    </form>
+  </div>
+  <script src="static/js/main.js" async></script>
+</body>
+
+</html>
