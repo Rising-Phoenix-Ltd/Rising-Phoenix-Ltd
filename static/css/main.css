@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -13,14 +14,8 @@ html {
 body {
   max-width: 1920px;
   min-width: 320px;
-  margin: 0 auto;
-}
-body>* {
+  margin: 0 auto; 
   font-family: 'Nunito', sans-serif;
-  transition: all 0.3s;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -60,21 +55,34 @@ footer {
   text-align: center;
   display: flex;
   flex-flow: column;
-  line-height: 1px;
   padding: 10px;
-  box-shadow: 0 0 1px #0005;
+  line-height: 1.5;
+  background: #2c3e50;
+  color: #fff9;
+}
+footer h4,h5 {
+  margin: 0;
 }
 footer .footNav a {
-  color: #000;
-  font-size: 42px;
-  margin: 0 12px;
+	color: inherit;
+  font-size: 24px;
+  margin: 0 8px;
   padding: 0;
 }
 footer .footNav a:hover {
   text-decoration: none;
   color: #a00;
-  text-shadow: 2px 2px #000;
+  text-shadow: 1px 1px #000;
 }
+footer .footNav a:nth-child(2):hover {
+	color: dodgerblue;
+}
+footer .footNav a:nth-child(3):hover {
+	color: deepskyblue;
+}
+
+
+
 
 
 
@@ -85,61 +93,82 @@ header {
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  box-shadow: 0 0 1px #0006;
+  padding: 8px 10px;
+  box-shadow: 0 0 1px #0007;
 }
-
+header.sticky {
+  position: sticky;
+  top: -10px;
+  z-index: 5;
+  color: #fff;
+  background: #a00;
+}
 
 /* this is for logo */
 
 header .logo h1 {
   margin: 0;
   letter-spacing: -5px;
-  font-family: 'Nunito', fantasy;
+  font-family: 'Cinzel Decorative', 'Nunito';
   font-variant: small-caps;
   color: #f00;
-  font-weight: 800;
-  padding: 8px 5px;
-  font-size: 42px;
+  font-weight: 700;
+  padding: 0px 10px 0px 0;
+  font-size: 38px;
   -webkit-text-stroke: 1px #000;
   display: inline-block;
 }
-
+header .menuBar {
+  display: none;
+}
 /* this is for navigation */
 header nav {
   padding: 10px 0;
+  text-transform: uppercase;
 }
-
 header nav a {
   color: inherit;
   padding: 3px;
-  margin: 0 0 0 40px;
+  margin: 0 0 0 30px;
   font-weight: 800;
   font-size: 1.1rem;
   border-bottom: 3px solid transparent;
-  text-transform: uppercase;
+  position: relative;
+  transition: all 0.5s ease;
 }
-
-header nav a:hover:not(.btn),
-nav a.active {
-  border-bottom: 3px solid #b00;
-  color: #b00;
+header nav a:not(.btn)::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #a00;
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+header nav a:hover:not(.btn), nav a.active:not(.btn) {
+  color: #a00;
   text-decoration: none;
+  text-align: center;
 }
-
-header .login .btn {
-  background: #c00;
+header nav a:hover:not(.btn)::before, nav a.active:not(.btn)::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+header nav .btn {
+  background: #a00;
   border-color: #a00;
   font-size: 1.1rem;
+  padding: 5px 10px;
   font-weight: 800;
-  text-transform: uppercase;
 }
-
 
 
 
 /* this is for popup login */
-header .login .form .cancel {
+.login  .form .cancel {
   position: absolute;
   display: inline-block;
   z-index: 4;
@@ -153,12 +182,12 @@ header .login .form .cancel {
   border-radius: 50%;
 }
 
-header .login .form .cancel:active {
+.login .form .cancel:active {
   border-style: inset;
   transform: scale(0.9);
 }
 
-header .login .form {
+.login .form {
   transition: all 0.5s;
   color: #000;
   position: absolute;
@@ -171,16 +200,16 @@ header .login .form {
   transform: translate(-50%, 0) scale(0);
 }
 
-header .login .form::before {
+.login .form::before {
   content: "";
   transition: none;
-  background: #0008;
+  background: #0009;
   width: 100%;
-  height: 1000%;
+  height: 200vh;
   position: absolute;
 }
 
-header .login .form #boxsign {
+.login .form #boxsign {
   text-align: center;
   position: relative;
   width: 50vw;
@@ -198,7 +227,7 @@ header .login .form #boxsign {
 
 .container {
   display: flex;
-  flex-flow: wrap;
+  flex-flow: row wrap;
   box-sizing: border-box;
   justify-content: space-evenly;
 }
@@ -208,19 +237,26 @@ header .login .form #boxsign {
   box-shadow: 0 0 0.5px #0002;
   text-align: center;
   flex: 1 0 0;
-  width: 340px;
+  width: 32%;
   transition: all 0.3s;
 }
 
 .container .box:hover {
   border: 2px solid #000;
-  background: #2c3e50;
-  color: #fff9;
-  box-shadow: -2px -4px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+  box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
   transform: scale(0.94);
   border-radius: 5px;
+  color: #fff;
 }
-
+.container .box:nth-child(1):hover {
+	background: #2c3e50;
+}
+.container .box:nth-child(2):hover {
+	background: steelblue;
+}
+.container .box:nth-child(3):hover {
+	background: cadetblue;
+}
 .container .box img {
   width: 100%;
   height: 178px;
@@ -296,10 +332,11 @@ header .login .form #boxsign {
 
 .buzz {
   display: flex;
-  height: 200px;
+  height: 150px;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 1px #0005;
+  border-color: slategrey;
 }
 
 .buzz .btn {
@@ -318,7 +355,7 @@ header .login .form #boxsign {
 .form {
   display: flex;
   flex-flow: column;
-  height: 100vh;
+  height: 512px;
   margin: 0;
   padding: 0;
   justify-content: center;
@@ -329,7 +366,7 @@ header .login .form #boxsign {
   background: url("../img/bg.jpeg") no-repeat center/cover;
   content: "";
   width: 100%;
-  height: 100%;
+  height: 512px;
   position: absolute;
   opacity: 0.5;
 }
@@ -360,7 +397,7 @@ header .login .form #boxsign {
 /* this for input fields */
 
 .form #boxsign .field {
-  padding: 10px 0;
+  padding: 8px 0 ;
 }
 
 .form #boxsign .field input {
@@ -386,35 +423,36 @@ header .login .form #boxsign {
 
 /* this is for floating label */
 .form #boxsign .field input:valid:not(:placeholder-shown) {
-  border: 2px solid mediumseagreen;
+  border: 2px solid #0a0;
 }
 
 .form #boxsign .field input:valid:not(:placeholder-shown)~label {
-  color: mediumseagreen;
+  color: #0a0;
 }
 
 .form #boxsign .field input:valid:not(:placeholder-shown)~label::after {
-  color: mediumseagreen;
+  color: #0a0;
   content: " ✓";
   word-spacing: 5px;
 }
 
 
 .form #boxsign .field input:invalid:not(:placeholder-shown)~label::after {
-  color: #c00;
+  color: #a00;
   content: " ✗";
   word-spacing: 5px;
 }
 
 .form #boxsign .field input:invalid:not(:placeholder-shown) {
-  border: 2px solid #c00;
+  border: 2px solid #a00;
 }
+
 
 .form #boxsign .field input:invalid:not(:placeholder-shown)~label {
-  color: #c00;
+  color: #a00;
 }
 
-.form #boxsign .field input:focus {
+.form #boxsign .field input:focus, .field input:not(:placeholder-shown) {
   border: 2px solid #000;
 }
 
@@ -425,14 +463,11 @@ header .login .form #boxsign {
   background: #fff;
   font-weight: 700;
   left: 18%;
-  transform: scale(0.9) translateY(-55%);
+  transform: scale(0.95) translateY(-55%);
 }
-
-
-/* this is for sign in bottom */
 .form #boxsign .btn {
   padding: 5px 14px;
-  background: #c00;
+  background: #a00;
   border-color: #a00;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -464,16 +499,17 @@ header .login .form #boxsign {
 
 .join .headBox h1 .highlight,
 .highlight {
-  color: #c00;
-  padding: 0 5px;
-  border-bottom: 2px solid #c00;
+  color: #a00;
+  padding: 0 3px;
+  border-bottom: 2px solid #a00;
 }
 
 .join .headBox .btn {
-  background: #c00;
+  background: #a00;
   border-color: #a00;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 10px 0 0;
   padding: 4px 20px;
 }
 
@@ -481,7 +517,7 @@ header .login .form #boxsign {
   display: flex;
   padding: 20px 10px;
   flex-flow: row wrap;
-  gap: 10px;
+  grid-gap: 10px;
   text-align: center;
   color: #fff9;
 }
@@ -489,16 +525,17 @@ header .login .form #boxsign {
 .join .listBox .list {
   background: #2c3e50;
   border-radius: 5px;
-  box-shadow: -2px -4px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+  box-shadow: -1px -2px 0px #0009 inset, 1px 1px 0px #fff7 inset;
+  border: 2px solid #000;
   flex: 1 1 0;
   padding: 20px 5px;
   transition: all 0.2s;
 }
 
 .join .listBox .list:hover {
-  transform: scale(0.98);
-  background: #a00;
+  transform: scale(0.95);
   color: #fff;
+  background: #a00;
 }
 
 .join .listBox .list div {
@@ -521,15 +558,18 @@ header .login .form #boxsign {
 .blockHead {
   border-bottom: 2px solid #a00;
   margin: 10px 0 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .blockHead h2 {
   color: #a00;
   font-size: 30px;
   border-left: 6px solid #a00;
+  border-right: 6px solid #a00;
+  padding: 10px 20px;
   margin: 0;
-  padding: 10px 0 10px 20px;
-  text-align: left;
   text-transform: uppercase;
 }
 
@@ -541,22 +581,21 @@ header .login .form #boxsign {
   margin: 0 0 10px 0;
 }
 
+
 .block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template: auto/ repeat(2, 1fr);
   color: #fff;
   padding: 10px;
   text-align: center
 }
-
-
 .block .about .aboutList {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   padding: 0 10px 0 0;
-  gap: 10px;
+  grid-gap: 10px;
   color: #fff9;
 }
 .block .about .aboutList .box a {
@@ -568,8 +607,18 @@ header .login .form #boxsign {
   flex: 1 0 0;
   border-radius: 5px;
   background: #2c3e50;
-  box-shadow: -2px -4px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+  box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+  border: 2px solid #000;
   padding: 20px;
+  transition: all 0.2s;
+}
+.block .about .aboutList .box:hover {
+	transform: scale(0.95);
+	color: #fff;
+	background: cadetblue;
+}
+.block .about .aboutList .discord:hover {
+	background: cornflowerblue;
 }
 
 .block .about .aboutList .box h3 {
@@ -578,15 +627,15 @@ header .login .form #boxsign {
   padding: 5px 10px;
   border-radius: 2px;
   margin: 0;
-  border: 2px outset seagreen;
+  border: 2px outset mediumseagreen;
   display: inline-block;
-  background: seagreen;
+  background: mediumseagreen;
   transition: all 0.2s;
 }
 
 .block .about .aboutList .discord h3 {
-  background: cornflowerblue;
-  border: 2px outset cornflowerblue;
+  background: royalblue;
+  border: 2px outset royalblue;
 }
 
 .block .about .aboutList .box h3:active {
@@ -611,6 +660,7 @@ header .login .form #boxsign {
   justify-content: center;
   align-self: start;
   background: #2c3e50;
+  border: 2px solid #000;
   padding: 25px;
   border-radius: 5px;
   box-shadow: -2px -4px 0px #0009 inset, 2px 2px 0px #fff7 inset;
@@ -678,18 +728,18 @@ header .login .form #boxsign {
   transform: translateY(-50%) scale(0.90);
 }
 .msg .field [id]:valid:not(:placeholder-shown) {
-  border: 2px solid  mediumspringgreen;
-  color:  mediumseagreen;
+  border: 2px solid  #0a0;
+  color:  #0a0;
 }
 .msg .field [id]:valid:not(:placeholder-shown)~label {
-  color:  mediumspringgreen;
+  color:  #0a0;
 }
 .block .contact .msg .btn {
   background: #a00;
   color: #fff;
   font-size: 22px;
   font-family: 'Nunito', sans-serif;
-  border-color: #c00;
+  border-color: #a00;
   margin: 10px 0 0;
 }
 
@@ -701,7 +751,7 @@ header .login .form #boxsign {
   padding: 10px;
   font-weight: 800;
   color: #fff;
-  background: #c00;
+  background: #a00;
 }
 .feature .list {
   display: flex;
@@ -710,40 +760,253 @@ header .login .form #boxsign {
 }
 .feature .list iframe {
   display: inline-block;
-  flex: 0 1 50%;
+  flex: 0 0 50%;
   aspect-ratio: 16/9;
   width: 0;
   box-shadow: 0 0 2px #0009;
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 .feature .list .eps {
-  flex: 0 1 50%;
+  flex: 0 0 50%;
   width: 0;
   display: grid;
-  grid-template: repeat(4, minmax(auto, 0.25fr)) / repeat(6, 1fr);
+  grid-template: repeat(4, minmax( auto, 0.25fr)) / repeat(6, minmax( auto ,1fr));
+  grid-gap: 10px 0;
   justify-items: center;
   align-items: center;
 }
-.feature .list .eps [href] {
-  padding: 8px 14px;
-  background: #c00;
-  border: 1px outset #c00;
+.feature .list .eps .btn {
+  background: #a00;
   color: #fff;
-  font-weight: 700;
-  transition: all 0.2s;
+  border: 2px outset #a00;
 }
-.feature .list .eps [href]:hover {
-  border: 1px inset #c00;
-  transform: scale(0.90);
-  text-decoration: none;
+.feature .add {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+}
+.feature .add .btn {
+	background: #a00;
+	border-color: #a00;
+	padding: 6px;
+	width: 120px;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 
 /* this is for privacy page */
 
 .privacy {
-  height: 100vh;
+  display: flex;
+  height: 512px;
+  flex-flow: column;
+  justify-content: start;
+  align-items: center;
+  background: #2c3e50;
+  overflow: hidden;
+}
+.privacy .bulb {
+  height: 60%;
+  position: relative;
+  transform: rotateZ(-20deg) translateX(50px);
   display: flex;
   flex-flow: column;
+  align-items: center;
+  animation: swing 1500ms infinite ease-in-out both alternate;
+}
+@keyframes swing {
+  100% {
+    transform: rotateZ(20deg) translateX(-50px);
+  }
+}
+.privacy .bulb .wire {
+  height: 180px;
+  background: #000;
+  width: 2px;
+}
+.privacy .bulb .lightHead {
+  clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0 100%);
+  background: #000;
+  height: 30px;
+  width: 66px;
+  margin: 0;
+  z-index: 1;
+}
+
+.privacy .bulb .lightOff {
+  background: #fff2;
+  height: 54px;
+  margin: 0;
+  width: 54px;
+  border-radius: 50%;
+  box-shadow: inset 1px 0 2px #fff3;
+  position: relative;
+  top: -10px;
+  transition: all 0.2s;
+}
+.privacy .bulb .lightOn {
+  background: #fff;
+  box-shadow: 0 0 5px #fff9, 0 0 10px #fff9, 0 0 160px 80px #fff3;
+}
+.privacy .switch {
+  padding: 6px 0;
+  width: 100px;
+  background: #000;
+  color: #fff9;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px outset #fff3;
+  transition: all 0.2s;
+}
+.privacy .switch:active {
+  border: 1px inset #fff3;
+  transform: scale(0.96);
+}
+.privacy .titleOff {
+  border-bottom: 3px solid #fff3;
+  padding: 2px 10px;
+  font-weight: 700;
+  word-spacing: 8px;
+  text-transform: uppercase;
+  color: #fff3;
+  font-size: 24px;
+  transition: all 0.2s;
+}
+.privacy .titleOn {
+  border-bottom: 3px solid #fff;
+  color: #fff;
+  text-shadow: 0 0 5px #fff9;
+  box-shadow: 0 6px 5px -6px #fff9;
+}
+
+
+/* this for for Gallery Page */
+.gallery .uploadBox {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery .uploadBox .title {
+	flex: 0 1 50%;
+	width: 0;
+	padding: 20px;
+	grid-gap: 10px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+.uploadBox .title h2 {
+	color: #a00;
+	font-size: 36px;
+	text-transform: uppercase;
+	border-bottom: 4px solid #a00;
+	align-self: stretch;
+}
+.uploadBox .title h4 {
+	color: #0009;
+	font-size: 20px;
+}
+.uploadBox .title .add {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.uploadBox .title .add .btn {
+	color: #fff;
+	padding: 10px 0;
+	margin: 10px 0 0;
+	font-size: 20px;
+	text-transform: uppercase;
+	background: #a00;
+	border-color: #a00;
+	display: flex;
+	width: 160px;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.uploadBox img {
+	flex: 0 1 50%;
+	width: 0;
+}
+
+/* this is for uploaded content*/
+.gallery .mainBox {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	color: #fff9;
+	grid-gap: 10px 0;
+	padding: 10px 0;
+}
+.gallery .mainBox .list {
+	flex: 0 1 32%;
+	width: 0;
+	padding: 10px 14px 14px;
+	color: #000;
+	border-radius: 5px;
+	display: grid;
+	grid-gap: 10px;
+	grid-template: 'title' 'post' 'user';
+	box-shadow: 0 0 2px #0009;
+	background: #0013;
+}
+.gallery .mainBox .list:hover {
+	background: #2c3e50;
+	border: 2px solid #000;
+	box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+	color: #fff9;
+}
+.mainBox .list .details {
+	grid-area: title;
+}
+.mainBox .list .userPost {
+	grid-area: user;
+	display: flex;
+	justify-content: space-between;
+	font-size: 13px;
+}
+.mainBox .list .details h3 {
+	font-size: 24px;
+}
+.mainBox .list .vPlayer {
+	grid-area: post;
+	aspect-ratio: 18/10;
+	width: 100%;
+	border-radius: 2px;
+}
+
+/* this is for openPlayer videos */
+.mainBox .list.openPlayer {
+	position: fixed;
+	padding: 0;
+	border-radius: 0;
+	grid-gap: 0;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	align-content: start;
+	justify-content: center;
+}
+.mainBox .list.openPlayer:hover {
+	background: #0009;
+	box-shadow: none;
+}
+.mainBox .list.openPlayer .details {
+	display: none;
+}
+.mainBox .list.openPlayer .userPost {
+	display: none;
+}
+.mainBox .list.openPlayer .vPlayer {
+	width: 70vw;
+	border-radius: 0;
 }

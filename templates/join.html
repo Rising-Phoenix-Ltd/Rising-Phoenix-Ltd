@@ -1,45 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content=" darkred">
-  <title>Join</title>
-  <!-- Custom Styles -->
-  <script src="https://kit.fontawesome.com/37a20c2b2d.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/jpeg" href="static/img/logo.jpeg">
-  <link rel="stylesheet" href="static/css/main.css" />
-  <link rel="stylesheet" href="static/css/mobile.css" />
-</head>
-
-<body>
-  <header>
-    <div class="logo">
-      <h1>
-        <span>R</span>
-        <span>i</span>
-        <span>s</span>
-        <span>i</span>
-        <span>n</span>
-        <span>g</span>
-      </h1>
-      <h1>
-        <span>P</span>
-        <span>h</span>
-        <span>o</span>
-        <span>e</span>
-        <span>n</span>
-        <span>i</span>
-        <span>x</span>
-      </h1>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/feature">Features</a>
+{% extends 'header.html' %}
+    <nav class="navHide">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('feature') }}">Features</a>
       <a href="#" class="active">Join us</a>
-      <a href="/privacy">Privacy</a>
+      <a href="{{ url_for('gallery') }}">Gallery</a>
+      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
     </nav>
     {% include 'login_button.html' %}
   </header>

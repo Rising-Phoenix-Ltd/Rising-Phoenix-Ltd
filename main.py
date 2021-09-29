@@ -204,9 +204,9 @@ def join_whatsapp(num):
         return redirect(Holy_Weebs)
 
 
-@app.route('/privacy')
-def privacy():
-    return render_template("privacy.html")
+@app.route('/gallery')
+def gallery():
+    return render_template("gallery.html")
 
 
 if __name__ == "__main__":

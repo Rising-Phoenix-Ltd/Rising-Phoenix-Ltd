@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="darkred">
-  <title>Sign in</title>
-  <!-- Custom Styles -->
-  <script src="https://kit.fontawesome.com/37a20c2b2d.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/jpeg" href="static/img/logo.jpeg">
-  <link rel="stylesheet" href="static/css/main.css">
-  <link rel="stylesheet" href="static/css/mobile.css" />
-</head>
-
-<body>
+{% extends 'header.html' %}
+  <nav class="navHide">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('feature') }}">Features</a>
+      <a href="{{ url_for('join') }}">Join us</a>
+      <a href="{{ url_for('gallery') }}">Gallery</a>
+      <a href="{{ url_for('login') }}" class="btn"><i class="fas fa-user"></i> Login</a>
+  </nav>
   <div class="form">
     <!-- this is for sign in  -->
     
@@ -44,7 +35,7 @@
       <button class="btn" type="submit"><span class="fa fa-user"></span> Sign in</button>
     </form>
   </div>
-  <script src="static/js/main.js" async></script>
+  {% include 'footer.html' %}
 </body>
 
 </html>

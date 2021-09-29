@@ -1,0 +1,75 @@
+{% extends 'header.html' %}
+		<nav class="navHide">
+			<a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('feature') }}">Features</a>
+			<a href="{{ url_for('join') }}">Join us</a>
+			<a href="#" class="active">Gallery</a>
+			<a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+		</nav>
+	</header>
+	{% include 'login_button.html' %}
+	<!-- this is for gallery page -->
+	<section class="gallery">
+		<div class="uploadBox">
+			<div class="title">
+				<h2>Gallery</h2>
+				<h4>
+					Upload and share your gaming moments here.
+					Note: only links are supported.
+				</h4>
+				<div class="add">
+					<a href="/gallery/upload" class="btn">
+						<b>UPLOAD</b>
+						<i class="fas fa-upload"></i>
+					</a>
+				</div>
+			</div>
+			<img src="static/img/gallery.jpg" alt="upload-background">
+		</div>
+		<div class="mainBox">
+			<div class="list">
+				<div class="details">
+					<h3 class="postTitle">Pokemon Silver</h3>
+				</div>
+				<iframe class="vPlayer" src="https://youtube.com/embed/JO365SMkrW8" frameborder="0"></iframe>
+				<div class="userPost">
+					<h3 class="author">@SMZaid</h3>
+					<h3 class="postDate">26 Aug 2021 7:38pm</h3>
+				</div>
+			</div>
+			<div class="list">
+				<div class="details">
+					<h3 class="postTitle">Anime Silver</h3>
+				</div>
+				<iframe class="vPlayer" name="post" src="https://youtube.com/embed/" frameborder="0"></iframe>
+				<div class="userPost">
+					<h3 class="author">@AKGamez</h3>
+					<h3 class="postDate">26 Aug 2021 10:00pm</h3>
+				</div>
+			</div>
+			<div class="list">
+				<div class="details">
+					<h3 class="postTitle">Pokemon Gold</h3>
+				</div>
+				<iframe class="vPlayer" name="post" src="https://youtube.com/embed/" frameborder="0"></iframe>
+				<div class="userPost">
+					<h3 class="author">@AKGamez</h3>
+					<h3 class="postDate">27 Aug 2021 10:00am</h3>
+				</div>
+			</div>
+			<div class="list">
+				<div class="details">
+					<h3 class="postTitle">Anime Gold</h3>
+				</div>
+				<iframe class="vPlayer" name="post" src="https://youtube.com/embed/" frameborder="0"></iframe>
+				<div class="userPost">
+					<h3 class="author">@SMZaid</h3>
+					<h3 class="postDate">27 Aug 2021 7:30am</h3>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% extends 'footer.html' %}
+</body>
+
+</html>
