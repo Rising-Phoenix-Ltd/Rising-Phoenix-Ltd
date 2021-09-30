@@ -1,4 +1,4 @@
-{% extends 'header.html' %}
+{% include 'header.html' %}
         <nav class="navHide">
 			<a href="{{ url_for('home') }}">Home</a>
 			<a href="{{ url_for('feature') }}">Features</a>
@@ -23,7 +23,7 @@
       <button class="btn" type="submit"><span class="fas fa-user"></span> Login</button>
     </form>
   </div>
-  {% include 'footer.html' %}
+  {% extends 'footer.html' %}
 </body>
 
 </html>

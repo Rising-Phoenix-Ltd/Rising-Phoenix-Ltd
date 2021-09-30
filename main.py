@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from datetime import date
 import os
 
 # --- Constants ---
@@ -60,16 +61,18 @@ class Gallery(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     name = db.Column(db.String(250), nullable=False)
-    heading = db.Column(db.String(250), nullable=False)
+    title = db.Column(db.String(250), nullable=False)
     source = db.Column(db.Text, nullable=False)
+    date = db.Column(db.String(250), nullable=False)
     gallery_user = relationship("User", back_populates="uploads")
 
 
 class Features(db.Model):
-    __tablename__ = "features"
+    __tablename__ = "videos"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), nullable=False)
-    link = db.Column(db.Text, nullable=False)
+    source = db.Column(db.Text, nullable=False)
+    target = db.Column(db.String(250), nullable=False)
 
 
 db.create_all()
@@ -170,9 +173,25 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/feature')
+@app.route('/feature', methods=['GET', 'POST'])
 def feature():
-    return render_template("feature.html", current_user=current_user)
+    videos_data = Features.query.all()
+    return render_template("feature.html", current_user=current_user, videos=videos_data)
+
+
+@app.route('/feature/admin', methods=['GET', 'POST'])
+@admin_only
+def feature_admin():
+    if request.method == "POST":
+        new_video = Features(
+            title=request.form['title'],
+            source=request.form['src'],
+            target=request.form['target'],
+        )
+        db.session.add(new_video)
+        db.session.commit()
+        return redirect(url_for('feature'))
+    return render_template("admin.html")
 
 
 @app.route('/join', methods=['GET', 'POST'])
@@ -206,7 +225,23 @@ def join_whatsapp(num):
 
 @app.route('/gallery')
 def gallery():
-    return render_template("gallery.html")
+    gallery_data = Gallery.query.all()
+    return render_template("gallery.html", current_user=current_user, videos=gallery_data)
+
+
+@app.route('/gallery/upload', methods=['GET', 'POST'])
+def gallery_upload():
+    if request.method == 'POST':
+        new_upload = Gallery(
+            name=current_user.name,
+            title=request.form['title'],
+            source=request.form['link'],
+            date=date.today().strftime("%d %b %Y"),
+        )
+        db.session.add(new_upload)
+        db.session.commit()
+        return redirect(url_for('gallery'))
+    return render_template("upload.html")
 
 
 if __name__ == "__main__":

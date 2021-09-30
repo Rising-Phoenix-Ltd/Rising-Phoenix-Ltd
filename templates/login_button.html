@@ -1,8 +1,4 @@
 <div class="login">
-      {% if current_user.is_authenticated: %}
-      <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
-      {% else: %}
-      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
       <div class="form" id="form">
         <span class="fas fa-times cancel" id="hidebtn"></span>
         <form id="boxsign" method="POST" action="{{url_for('login_spl')}}" accept-charset="utf-8">
@@ -19,5 +15,4 @@
           <button class="btn" type="submit"><span class="fas fa-user"></span> Login</button>
         </form>
       </div>
-      {% endif %}
     </div>
