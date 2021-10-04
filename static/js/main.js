@@ -9,21 +9,6 @@ for (i = 0; i < btn.length; i++) {
   });
 }
 
-// this is for password validation
-{
-  let password = document.getElementById("password");
-  let confirm_password = document.getElementById("confirm_password");
-
-  function validatePassword() {
-    if (password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Please enter same password");
-    }
-    else {
-      confirm_password.setCustomValidity('');
-    }
-  }
-}
-
 // this is for  hamburger Menubar
 let hamburger = {
   menu : document.querySelector('.menuBar'),
@@ -73,6 +58,8 @@ window.addEventListener('scroll', () => {
   }
 })
 
+/*
+// this is for gallery video
 let list = document.querySelectorAll('.mainBox .list ');
 
 for (let i = 0; i < list.length; i++) {
@@ -80,3 +67,4 @@ for (let i = 0; i < list.length; i++) {
 		list[i].classList.toggle('openPlayer');
 	})
 }
+*/

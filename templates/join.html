@@ -1,17 +1,29 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Join Us</title>
+    {% include 'header.html' %}
+</head>
+
+<body>
+	<header>
+      {% include 'logo.html' %}
     <nav class="navHide">
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('feature') }}">Features</a>
       <a href="#" class="active">Join us</a>
       <a href="{{ url_for('gallery') }}">Gallery</a>
       {% if current_user.is_authenticated: %}
-         <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
-        {% else: %}
-        <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
-         {% endif %}
+      <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
+      {% else: %}
+      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+      {% endif %}
     </nav>
   </header>
-{% include 'login_button.html' %}
+    <section class="login">
+		{% include 'login_button.html' %}
+	</section>
   <!-- this is for join -->
   <section class="join">
     <div class="headBox">

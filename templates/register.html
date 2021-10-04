@@ -1,4 +1,14 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>RisingPhoenix Register</title>
+  {% include 'header.html' %}
+</head>
+
+<body>
+	<header>
+      {% include 'logo.html' %}
   <nav class="navHide">
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('feature') }}">Features</a>
@@ -12,7 +22,7 @@
     
     <form id="boxsign" method="POST" action="{{ url_for('register') }}" accept-charset="utf-8" >
       <h2> Create Account </h2>
-      <p>Already have an account? <a href="/login"> Login</a></p>
+      <p>Already have an account? <a href="{{ url_for('login') }}"> Login</a></p>
       
       <div class="field">
         <input type="text" id="username" name="username" placeholder=" " title="Username must be atleast 4 characters" pattern=".{4,}" required />
@@ -36,7 +46,8 @@
       <button class="btn" type="submit"><span class="fa fa-user"></span> Sign in</button>
     </form>
   </div>
-  {% extends 'footer.html' %}
+  {% include 'footer.html' %}
+  <script src="/static/js/form.js"></script>
 </body>
 
 </html>

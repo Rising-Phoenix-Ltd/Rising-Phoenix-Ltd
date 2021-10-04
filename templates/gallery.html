@@ -1,17 +1,29 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Gallery</title>
+	{% include 'header.html' %}
+</head>
+
+<body>
+	<header>
+		{% include 'logo.html' %}
 		<nav class="navHide">
 			<a href="{{ url_for('home') }}">Home</a>
 			<a href="{{ url_for('feature') }}">Features</a>
 			<a href="{{ url_for('join') }}">Join us</a>
 			<a href="#" class="active">Gallery</a>
 			{% if current_user.is_authenticated: %}
-         <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
-        {% else: %}
-        <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
-         {% endif %}
+         	<a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
+        	{% else: %}
+        	<a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+         	{% endif %}
 		</nav>
 	</header>
-{% include 'login_button.html' %}
+	<section class="login">
+		{% include 'login_button.html' %}
+	</section>
 	<!-- this is for gallery page -->
 	<section class="gallery">
 		<div class="uploadBox">
@@ -35,7 +47,7 @@
 					{% endif %}
 				</div>
 			</div>
-			<img src="static/img/gallery.jpg" alt="upload-background">
+			<img src="/static/img/gallery.svg" alt="upload-background">
 		</div>
 		<div class="mainBox">
 			{% for video in videos %}
@@ -43,7 +55,7 @@
 				<div class="details">
 					<h3 class="postTitle">{{ video['title'] }}</h3>
 				</div>
-				<iframe class="vPlayer" src="{{ video['source'] }}" frameborder="0"></iframe>
+				<video poster="https://img.youtube.com/vi/JO365SMkrW8/hq720.jpg" class="vPlayer" data-yt2html5="{{ video['source'] }}" preload="none" controls></video>
 				<div class="userPost">
 					<h3 class="author">@{{ video['name'] }}</h3>
 					<h3 class="postDate">{{ video['date'] }} {{ video['time'] }}</h3>
@@ -53,6 +65,13 @@
 		</div>
 	</section>
 	{% extends 'footer.html' %}
+	<script src="https://cdn.jsdelivr.net/gh/thelevicole/youtube-to-html5-loader@4.0.1/dist/YouTubeToHtml5.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		new YouTubeToHtml5({
+	    // Filter streams to those with audio channels
+	    withAudio: true,
+	});
+	</script>
 </body>
 
 </html>

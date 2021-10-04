@@ -8,14 +8,27 @@
 	margin: 0;
 }
 
-html {
+:root {
 	scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar{
+	width: 0.5em;
+}
+::-webkit-scrollbar-track{
+	background: #000;
+	margin-block: 3em;
+	border-radius: 100vw;
+}
+::-webkit-scrollbar-thumb{
+	background: #a00;
+	border:  2px #000 solid;
+	border-radius: 100vw;
+}
 body {
-	max-width: 1920px;
-	min-width: 320px;
+	max-width: 1980px;
 	margin: 0 auto;
+	background: #fff;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -226,15 +239,15 @@ header nav .btn {
 	transition: none;
 	background: #0009;
 	width: 100%;
-	height: 200vh;
+	height: 1000%;
 	position: absolute;
 }
 
 .login .form #boxsign {
 	text-align: center;
 	position: relative;
-	width: 50vw;
-	padding: 20px 8%;
+	width: 50%;
+	padding: 20px 6%;
 	overflow: auto;
 	border-radius: 14px;
 	background: url('../img/bg.jpeg') no-repeat center/cover;
@@ -257,19 +270,17 @@ header nav .btn {
 	padding: 10px;
 	box-shadow: 0 0 0.5px #0002;
 	text-align: center;
-	flex: 1 0 0;
+	flex: 0 0 1;
 	width: 32%;
 	transition: all 0.3s;
 }
-
 .container .box:hover {
 	border: 2px solid #000;
-	box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+	box-shadow: -1px -2px 0px #0009 inset, 2px 2px 0px #fff7 inset;
 	transform: scale(0.94);
 	border-radius: 5px;
 	color: #fff;
 }
-
 .container .box:nth-child(1):hover {
 	background: #2c3e50;
 }
@@ -284,9 +295,9 @@ header nav .btn {
 
 .container .box img {
 	width: 100%;
-	height: 178px;
+	aspect-ratio: 16/9;
 	margin: 0;
-	border-radius: 5px;
+	border-radius: 4px;
 	border: 1px solid black;
 }
 
@@ -381,6 +392,7 @@ header nav .btn {
 	display: flex;
 	flex-flow: column;
 	height: 512px;
+	position: relative;
 	margin: 0;
 	padding: 0;
 	justify-content: center;
@@ -393,14 +405,14 @@ header nav .btn {
 	width: 100%;
 	height: 512px;
 	position: absolute;
-	opacity: 0.5;
+	opacity: 0.7;
+	z-index: -1;
 }
 
 .form #boxsign {
 	text-align: center;
-	position: relative;
-	width: 50vw;
-	padding: 20px 8%;
+	width: 50%;
+	padding: 20px 6%;
 	overflow: auto;
 	border-radius: 14px;
 	box-shadow: 0 1px 3px #0007;
@@ -423,12 +435,13 @@ header nav .btn {
 
 .form #boxsign .field {
 	padding: 8px 0;
+	position: relative;
 }
 
 .form #boxsign .field input {
 	width: 100%;
 	outline: none;
-	border: 1px solid #0007;
+	border: 1px solid #0009;
 	color: #000;
 	font-family: 'Nunito', sans-serif;
 	padding: 10px 16px;
@@ -439,9 +452,9 @@ header nav .btn {
 
 .form #boxsign .field label {
 	position: absolute;
-	left: 20%;
-	transform: translateY(44%);
-	color: #0007;
+	left: 5%;
+	transform: translateY(45%);
+	color: #0009;
 	transition: all 0.2s;
 }
 
@@ -488,7 +501,7 @@ header nav .btn {
 	color: #000;
 	background: #fff;
 	font-weight: 700;
-	left: 18%;
+	left: 3%;
 	transform: scale(0.95) translateY(-55%);
 }
 
@@ -504,7 +517,7 @@ header nav .btn {
 /* this is for join page */
 .join {
 	color: #fff;
-	background: #0035;
+	background: #0015;
 }
 
 .join .headBox {
@@ -637,7 +650,7 @@ header nav .btn {
 	flex: 1 0 0;
 	border-radius: 5px;
 	background: #2c3e50;
-	box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+	box-shadow: -2px -2px 0px #0009 inset, 2px 2px 0px #fff7 inset;
 	border: 2px solid #000;
 	padding: 20px;
 	transition: all 0.2s;
@@ -695,7 +708,7 @@ header nav .btn {
 	border: 2px solid #000;
 	padding: 25px;
 	border-radius: 5px;
-	box-shadow: -2px -4px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+	box-shadow: -2px -2px 0px #0009 inset, 2px 2px 0px #fff7 inset;
 }
 
 .block .contact h2 {
@@ -784,6 +797,7 @@ header nav .btn {
 }
 
 
+
 /* this is for feature page */
 .feature .title {
 	margin: 10px 0 0;
@@ -794,42 +808,95 @@ header nav .btn {
 	background: #a00;
 }
 
-.feature .list {
+.feature .frameBox {
 	display: flex;
 	padding: 10px;
-	grid-gap: 10px;
+	background: #0015;
 }
-
-.feature .list iframe {
-	display: inline-block;
-	flex: 0 0 50%;
+.feature .frameBox .player {
+	flex: 0 0 1;
 	aspect-ratio: 16/9;
-	width: 0;
+	width: 50%;
 	box-shadow: 0 0 2px #0009;
 	border: none;
 	border-radius: 4px;
 }
 
-.feature .list .eps {
-	flex: 0 0 50%;
-	width: 0;
+.feature .frameBox .eps {
+	flex: 0 0 1;
+	width: 50%;
 	display: grid;
-	grid-template: repeat(4, minmax(auto, 0.25fr)) / repeat(6, minmax(auto, 1fr));
-	grid-gap: 10px 0;
-	justify-items: center;
-	align-items: center;
+	grid-template: repeat(14, minmax(auto, 200px))/ 1fr;
+	grid-gap: 20px 0;
+	padding: 0 10px;
+	justify-items: stretch;
+	aspect-ratio: 16/9;
+	overflow-y: auto;
+}
+.feature .frameBox .eps .btn {
+  color: #000;
+  display: flex;
+  position: relative;
+  border: none;
+  padding: 0;
+}
+.frameBox .eps .btn:hover {
+  background: #a00;
+  box-shadow: -1px -1px #0009 inset, 1px 1px #fff7 inset;
+  border: 1px #000 solid;
+  font-weight: 600;
+  transform: scale(0.98);
+}
+.frameBox .eps .btn:hover .link {
+  text-decoration: none;
+  color: #fff;
+}
+.frameBox .eps .btn:hover .delete {
+  transform: scaleX(1);
+}
+.frameBox .eps .btn .link {
+  display: flex;
+  padding: 10px;
+  flex: 0 0 85%;
+  width: 0;
+  color: inherit;
+  grid-gap: 10px;
+  font-weight: 600;
+}
+.frameBox .eps .btn .link img {
+  aspect-ratio: 16/ 9;
+  flex: 0 0 30%;
+  width: 0;
+  align-self: center;
+  border: 1px #000 solid;
+}
+.frameBox .eps .btn .link p {
+  align-self: start;
+  flex: 0 0 70%;
+  width: 0;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.frameBox .eps .btn .delete {
+  flex: 0 0 15%;
+  width: 0;
+  background: #000;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 1px #fff9 inset;
+  display: flex;
+  transform-origin: right center;
+  transform: scaleX(0);
+  transition: all 0.3s;
 }
 
-.feature .list .eps .btn {
-	background: #a00;
-	color: #fff;
-	border: 2px outset #a00;
-}
 
 .feature .add {
 	display: flex;
-	justify-content: center;
+	justify-content: right;
 	align-items: center;
+	padding: 10px;
 	height: 100px;
 }
 
@@ -946,11 +1013,12 @@ header nav .btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow: hidden;
 }
 
 .gallery .uploadBox .title {
-	flex: 0 1 50%;
-	width: 0;
+	flex: 0  0 1;
+	width: 50%;
 	padding: 20px;
 	grid-gap: 10px;
 	display: flex;
@@ -981,50 +1049,48 @@ header nav .btn {
 
 .uploadBox .title .add .btn {
 	color: #fff;
-	padding: 10px 0;
+	padding: 8px;
 	margin: 10px 0 0;
-	font-size: 20px;
+	font-size: 18px;
 	text-transform: uppercase;
 	background: #a00;
 	border-color: #a00;
 	display: flex;
-	width: 160px;
+	min-width: 160px;
 	justify-content: space-evenly;
-	align-items: center;
 }
 
 .uploadBox img {
-	flex: 0 1 50%;
-	width: 0;
+	flex: 0 0 1;
+	width: 50%;
+	transform: scale(0.84);
 }
 
 /* this is for uploaded content*/
 .gallery .mainBox {
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-evenly;
 	color: #fff9;
-	grid-gap: 10px 0;
-	padding: 10px 0;
+	grid-gap: 10px;
+	padding: 10px;
+	display: grid;
+	grid-template: auto / repeat(3, 1fr);
 }
 
 .gallery .mainBox .list {
-	flex: 0 1 32%;
-	width: 0;
 	padding: 10px 14px 14px;
 	color: #000;
 	border-radius: 5px;
 	display: grid;
 	grid-gap: 10px;
-	grid-template: 'title''post''user';
+	grid-template: 'title' 'title' 'post' 'user';
 	box-shadow: 0 0 2px #0009;
-	background: #0013;
+	background: #0012;
 }
 
 .gallery .mainBox .list:hover {
 	background: #2c3e50;
 	border: 2px solid #000;
-	box-shadow: -2px -3px 0px #0009 inset, 2px 2px 0px #fff7 inset;
+	box-shadow: -2px -2px 0px #0009 inset, 2px 2px 0px #fff7 inset;
 	color: #fff9;
 }
 
@@ -1036,7 +1102,7 @@ header nav .btn {
 	grid-area: user;
 	display: flex;
 	justify-content: space-between;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .mainBox .list .details h3 {
@@ -1045,39 +1111,8 @@ header nav .btn {
 
 .mainBox .list .vPlayer {
 	grid-area: post;
-	aspect-ratio: 18/10;
+	border: none;
+	aspect-ratio: 16/9;
 	width: 100%;
 	border-radius: 2px;
-}
-
-/* this is for openPlayer videos */
-.mainBox .list.openPlayer {
-	position: fixed;
-	padding: 0;
-	border-radius: 0;
-	grid-gap: 0;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	align-content: start;
-	justify-content: center;
-}
-
-.mainBox .list.openPlayer:hover {
-	background: #0009;
-	box-shadow: none;
-}
-
-.mainBox .list.openPlayer .details {
-	display: none;
-}
-
-.mainBox .list.openPlayer .userPost {
-	display: none;
-}
-
-.mainBox .list.openPlayer .vPlayer {
-	width: 70vw;
-	border-radius: 0;
 }

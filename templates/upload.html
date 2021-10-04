@@ -2,156 +2,14 @@
 <html lang="en">
 
 <head>
-	<title>Rising-Pheonix</title>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content=" #a00">
-	<meta name="robots" content="index, follow">
-	<meta name="googlebot" content="index, follow">
-	<meta name="google-site-verification" content="gsARYKN1Cv_FMjMreIZNFgclsDYx9BROy0rKaeSFOtA" />
-	<!-- Custom Styles -->
-	<link rel="icon" type="image/jpeg" href="/static/img/logo.jpeg">
-	<link rel="stylesheet" href="/static/css/main.css" type="text/css" />
-	<link rel="stylesheet" href="/static/css/mobile.css" type="text/css" />
-	<style type="text/css">
-		main {
-			height: 512px;
-		}
-
-		main form {
-			height: 100%;
-			display: flex;
-			text-align: center;
-			align-items: center;
-			justify-content: center;
-			flex-flow: column;
-		}
-
-		main form h2 {
-			border-bottom: 3px solid #a00;
-			padding: 0 10px;
-			color: #a00;
-		}
-
-		main form .field {
-			position: relative;
-			padding: 30px 0 5px;
-		}
-
-		main form input {
-			padding: 6px 10px;
-			outline: none;
-			border: none;
-			border-bottom: 1px solid #0009;
-			width: 40vw;
-			transition: all 0.2s;
-		}
-
-		main form label {
-			position: absolute;
-			color: #0009;
-			left: 10px;
-			transform: translateY(20%);
-			transition: all 0.2s;
-		}
-
-		form input:focus,
-		form input:focus:not(:placeholder-shown) {
-			border: none;
-			border-bottom: 2px solid #a00;
-		}
-
-		form input:focus+label,
-		form input:not(:placeholder-shown)+label {
-			color: #a00;
-			font-weight: 700;
-			left: 5px;
-			transform: translateY(-75%) scale(0.94);
-		}
-
-		form input:valid:not(:placeholder-shown) {
-			border: none;
-			border-bottom: 2px solid #a00;
-		}
-
-		form input:valid:not(:placeholder-shown)+label::after {
-			content: " ✓";
-			word-spacing: 10px;
-
-		}
-
-		form .add {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		}
-		form .add .btn {
-		color: #fff;
-		padding: 6px 0;
-		margin: 10px 0 0;
-		font-size: 16px;
-		text-transform: uppercase;
-		background: #a00;
-		border-color: #a00;
-		display: flex;
-		width: 140px;
-		justify-content: space-evenly;
-		align-items: center;
-		}
-
-		main form em {
-			font-size: 11px;
-			color: #fff;
-			font-style: normal;
-			margin: 5px 25%;
-			padding: 2px 3px;
-			border-radius: 2px;
-			border: 1px solid #000;
-			background: #c55;
-		}
-
-		main form em span {
-			font-weight: 700;
-		}
-
-		@media only screen and (max-width: 550px) {
-			main form .field input {
-				width: 80vw;
-			}
-
-			main form em {
-				margin: 2px;
-				font-size: 8px;
-			}
-		}
-	</style>
+	<title>Gallery Upload Form</title>
+	{% include 'header.html' %}
+	<link rel="stylesheet" href="/static/css/upload.css" />
 </head>
 
 <body>
 	<header>
-		<div class="logo">
-			<h1>
-				<span>R</span>
-				<span>i</span>
-				<span>s</span>
-				<span>i</span>
-				<span>n</span>
-				<span>g</span>
-			</h1>
-			<h1>
-				<span>P</span>
-				<span>h</span>
-				<span>o</span>
-				<span>e</span>
-				<span>n</span>
-				<span>i</span>
-				<span>x</span>
-			</h1>
-		</div>
-		<div class="menuBar btn">
-			<i id="icon" class="fas fa-bars fa-fw"></i>
-		</div>
+		{% include 'logo.html' %}
 		<nav class="navHide">
 			<a href="{{ url_for('home') }}">Home</a>
 			<a href="{{ url_for('feature') }}">Features</a>
@@ -160,7 +18,9 @@
 			<a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
 		</nav>
 	</header>
-	{% include 'login_button.html' %}
+	<section class="login">
+		{% include 'login_button.html' %}
+	</section>
 	<!-- this is for upload section-->
 	<main>
 		<form method="POST" action="{{ url_for('gallery_upload') }}" accept-charset="utf-8">
@@ -170,11 +30,20 @@
 				<label for="eps">Title</label>
 			</div>
 			<div class="field">
+				<input type="text" name="description" placeholder=" " required />
+				<label for="eps">description</label>
+			</div>
+			<div class="field">
 				<input type="text" name="link" id="link" placeholder=" " required />
 				<label for="link">Embed link</label>
 			</div>
-			<em><span>Note:</span> Either provide youtube embed link, or upload on G-Drive and paste the embed link here.
-			</em>
+			<div class="fileField">
+				<label class="btn" for="file">
+					<i class="fas fa-photo-film"></i>&nbsp;&nbsp;Choose File</label>
+				<input type="file" name="file" id="file" placeholder=" " accept="image/*, video/*, text/plain, audio/*" required hidden />
+				<label id="txt" for="file">No File Choosen</label>
+			</div>
+			<em><span>Note: </span> Select only Video, Image and Audio as their are all supported but not other documents.</em>
 			<div class="add">
 				<button class="btn" type="submit">
 					<b>UPLOAD</b>
@@ -184,6 +53,7 @@
 		</form>
 	</main>
 	{% extends 'footer.html' %}
+	<script src="/static/js/upload.js" async></script>
 </body>
 
 </html>

@@ -1,31 +1,42 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>RisingPheonix</title>
+    {% include 'header.html' %}
+</head>
+
+<body>
+	<header>
+      {% include 'logo.html' %}
     <nav class="navHide">
       <a href="#" class="active">Home</a>
       <a href="{{ url_for('feature') }}">Features</a>
       <a href="{{ url_for('join') }}">Join us</a>
       <a href="{{ url_for('gallery') }}">Gallery</a>
       {% if current_user.is_authenticated: %}
-         <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
-        {% else: %}
-        <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
-         {% endif %}
+      <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
+      {% else: %}
+      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+      {% endif %}
     </nav>
-<!--need to solve this issue-->
   </header>
-{% include 'login_button.html' %}
+    <section class="login">
+      {% include 'login_button.html' %}
+	</section>
   <!--   this is for main content -->
   <section class="container">
     <div class="box game">
       <h2>Gaming Community</h2>
       <img src="https://wallpapercave.com/wp/wp5053569.jpg">
       <p>Our Gaming Community is for Games lover who loves playing trending games. you can also make team to play your favourite games.</p>
-      <a href="/join" class="btn"> Join us</a>
+      <a href="{{ url_for('join') }}" class="btn"> Join us</a>
     </div>
     <div class="box anime">
       <h2>Anime Community</h2>
       <img src="https://wallpaperaccess.com/full/21612.jpg">
       <p> This Community is for Man of Culture who love to discuss about their favourite anime, manga, manhwa and manhua. you will never going to be empty when are in this group.</p>
-      <a href="/feature" class="btn"> Watch Now</a>
+      <a href="{{ url_for('feature') }}" class="btn"> Watch Now</a>
     </div>
     <div class="box league">
       <h2>Competitive League</h2>
@@ -34,10 +45,10 @@
       <a href="/join" class="btn"> Enter Now </a>
     </div>
   </section>
-  <div class="buzz">
-    <button onclick="document.location.href='join'" type="submit" class="btn">Join Us</button>
-  </div>
-  {% extends 'footer.html' %}
+	<div class="buzz">
+		<button onclick="window.location.href = 'join' " type="submit" class="btn">Join Us</button>
+	</div>
+  {% include 'footer.html' %}
 </body>
 
 </html>
