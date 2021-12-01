@@ -2,28 +2,22 @@
 <html lang="en">
 
 <head>
-	<title>RisingPheonix</title>
-    {% include 'header.html' %}
+	<title>Rising Pheonix</title>
+    {% include './heads/header.html' %}
 </head>
 
 <body>
 	<header>
-      {% include 'logo.html' %}
+      {% include './heads/logo.html' %}
     <nav class="navHide">
-      <a href="#" class="active">Home</a>
+      <a href="{{ url_for('home') }}" class="active">Home</a>
       <a href="{{ url_for('feature') }}">Features</a>
       <a href="{{ url_for('join') }}">Join us</a>
       <a href="{{ url_for('gallery') }}">Gallery</a>
-      {% if current_user.is_authenticated: %}
-      <a href="{{ url_for('logout') }}" class="btn"><i class="fas fa-user"></i> Logout</a>
-      {% else: %}
-      <a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
-      {% endif %}
+      {% include './heads/userbtn.html' %}
     </nav>
   </header>
-    <section class="login">
-      {% include 'login_button.html' %}
-	</section>
+    {% include './heads/profile-popup.html' %}
   <!--   this is for main content -->
   <section class="container">
     <div class="box game">
@@ -45,10 +39,10 @@
       <a href="/join" class="btn"> Enter Now </a>
     </div>
   </section>
-	<div class="buzz">
-		<button onclick="window.location.href = 'join' " type="submit" class="btn">Join Us</button>
-	</div>
-  {% include 'footer.html' %}
+  <div class="bounce">
+    <a href="{{ url_for('join') }}" class="btn">Join Us</a>
+  </div>
+  {% include './heads/footer.html' %}
 </body>
 
 </html>

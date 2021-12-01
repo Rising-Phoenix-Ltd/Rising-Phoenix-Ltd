@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Account</title>
+  {% include './heads/header.html' %}
+</head>
+
+<body>
+  <header>
+    {% include './heads/logo.html' %}
+    <nav class="navHide">
+      <a href="/">Home</a>
+      <a href="/feature">Features</a>
+      <a href="/join">Join us</a>
+      <a href="/gallery">Gallery</a>
+      {% include './heads/userbtn.html' %}
+    </nav>
+  </header>
+  <!-- this is for usermenu & login popup-->
+  {% include './heads/profile-popup.html' %}
+  <!--  this is setting page -->
+  <h2 class="title">Settings</h2>
+  <section class="settings">
+    <nav class="settingNav">
+      <div>
+        <a class="active" href="{{ url_for('settings', name=current_user.name) }}">Account info</a>
+        <a href="{{ url_for('change_password', name=current_user.name) }}">Change Password</a>
+        <a href="{{ url_for('other_settings', name=current_user.name) }}">Other Settings</a>
+      </div>
+    </nav>
+    <!-- this is for editing info -->
+    <div class="settingContent" id="edit-info">
+      <div class="formBox">
+        <form action="{{ url_for('settings_post', name=current_user.name) }}" method="POST" enctype="multipart/form-data">
+          <div class="photo">
+            <label>
+              <img id="uploadedPic" onerror="this.src = alt" src="{{ user['profile_pic'] }}" alt="/static/img/user.svg" />
+              <input id="uploadPic" type="file" accept="image/*" name="profile-pic" hidden>
+            </label>
+            <div class="selection">
+              <label for="uploadPic">
+                <i class="fas fa-upload"></i>
+                <strong>Upload</strong>
+              </label>
+
+              <label id="btnDelete">
+                <i class="fas fa-trash-can"></i>
+                <strong>Remove</strong>
+              </label>
+            </div>
+          </div>
+            {% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<p><em class="flash">
+						{{ message }}
+						</em></p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+<!--          Fix the Pre-filled Input Issue-->
+          <div class="field">
+            <input type="email" name="edit-email" placeholder="Enter Email" value="{{ user['email'] }}">
+          </div>
+          <div class="field">
+            <input type="text" name="edit-username" placeholder="Enter username" value="{{ user['name'] }}"/>
+          </div>
+          {% if user['bio'] == None: %}
+          <div class="field">
+            <input type="text" name="edit-bio" placeholder="Write about yourself" value=""/>
+          </div>
+          {% else: %}
+          <div class="field">
+            <input type="text" name="edit-bio" placeholder="Write about yourself" value="{{ user['bio'] }}"/>
+          </div>
+          {% endif %}
+
+          <div class="utility">
+            <a href="{{ url_for('settings', name=current_user.name) }}">Cancel</a>
+            <button type="submit" class="btn">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="/static/js/validation.js"></script>
+  <script src="/static/js/user.js" async></script>
+  {% include './heads/footer.html' %}
+</body>
+
+</html>

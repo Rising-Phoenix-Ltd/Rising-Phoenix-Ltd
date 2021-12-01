@@ -1,0 +1,324 @@
+/*============ 
+  this is my account page
+============*/
+
+.account .info {
+  display: flex;
+  grid-gap: 20px;
+  padding: 10px;
+}
+
+.account .info .field {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.account .info .field:nth-child(2) {
+  flex: 2;
+  padding-block: 20px;
+  grid-gap: 20px;
+  position: relative;
+  align-items: stretch;
+}
+
+.field .items {
+  display: flex;
+  align-items: baseline;
+  grid-gap: 25px;
+  padding: 5px;
+  color: #777;
+}
+.field .items:hover {
+  color: var(--dark);
+}
+
+.info .field .profilePic {
+  border-radius: 50%;
+  background: var(--light);
+  border: 1px solid var(--theme-color);
+  width: 50%;
+  transform: scale(0.75);
+  max-width: 100%;
+  padding: 2px;
+  aspect-ratio: 1;
+}
+.info .field .username {
+  color: var(--theme-color);
+}
+.info .field .btn {
+  border-color: var(--theme-color);
+  background: var(--theme-color);
+  padding: 6px 50px;
+  margin-top: 20px;
+  align-self: start;
+}
+
+
+/*============ 
+  this user popup 
+============*/
+.user-popup {
+  position: absolute;
+  right: 5px;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.user-popup.show {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.user-popup::after {
+  content: "";
+  width: 40px;
+  height: 20px;
+  z-index: -1;
+  background: var(--light);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  position: absolute;
+  top: -10px;
+  right: 0px;
+}
+
+.user-popup .user-nav {
+  display: flex;
+  flex-flow: column;
+  background: var(--light);
+  box-shadow: 0px 5px 10px -5px #0007;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.user-popup .user-nav a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--dark);
+  font-weight: 700;
+  padding-block: 10px;
+  padding-inline: 20px;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+.user-nav a::after {
+  content: "";
+  position: absolute;
+  inset: 0 100% 0 0;
+  transition: all 0.3s;
+  background: var(--theme-color);
+  z-index: -1;
+}
+.user-nav a:hover::after, 
+.user-nav a.active::after {
+  inset: 0;
+}
+.user-popup .user-nav a:hover,
+.user-nav a.active,
+.user-nav .user-info:hover p {
+  color: var(--light);
+  text-decoration: none;
+}
+
+
+.user-popup .user-nav .user-info {
+  padding-inline: 20px 10px;
+  grid-gap: 20px;
+}
+.user-nav .user-info p {
+  color: #0009;
+  font-size: 0.8rem;
+}
+.user-nav .photo {
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+
+/*============
+  this is for setting
+==============*/
+.settings {
+  display: flex;
+}
+.settingNav {
+  flex: 1;
+  background-color: var(--theme-color);
+  padding: 10px;
+}
+.settingNav div {
+  display: flex;
+  flex-flow: column;
+  background: var(--light);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.settingNav a {
+  color: var(--dark);
+  font-weight: 700;
+  padding: 5px;
+  margin-top: 5px;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.settingNav a:hover,
+.settingNav .active {
+  text-decoration: none;
+  border-radius: 5px;
+  text-indent: 10px;
+  background: var(--theme-color)1;
+}
+.settingNav a::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  right: 100%;
+  border-radius: 5px;
+  background: var(--theme-color);
+}
+.settingNav a:hover::after,
+.settingNav .active::after {
+  width: 5px;
+}
+
+.settingContent {
+  flex: 4;
+  display: flex;
+  flex-flow: column;
+}
+
+#edit-info .photo {
+  display: flex;
+  gap: 10px;
+}
+#edit-info .formBox .utility {
+  display: flex;
+  grid-gap: 20px;
+  align-items: center;
+  margin: auto;
+}
+
+
+.photo > label {
+  width: 50%;
+}
+.photo div {
+  display: flex;
+  width: 50%;
+  flex-flow: column;
+  align-items: baseline;
+  grid-gap: 10px;
+}
+.photo div label {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  grid-gap: 10px;
+  padding: 10px;
+  transition: all 0.5s;
+}
+.photo div label:first-child {
+  background: var(--light);
+}
+.photo div label:last-child {
+  background: var(--theme-color);
+  color: var(--light);
+}
+
+.photo div label strong {
+  display: none;
+}
+
+.photo div label:hover {
+  width: 100%;
+  justify-content: space-between;
+}
+.photo div label:hover strong {
+  display: inline-block;
+}
+
+
+#edit-info .photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  outline: 1px solid var(--theme-color);
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+#edit-info .photo img:active {
+  outline-style: dashed;
+  box-shadow: 0 0 10px #0009;
+  background: var(--light);
+  outline-offset: 5px;
+}
+
+#change-password .formBox p{
+  text-align: left;
+}
+
+#other-settings .formBox {
+  text-align: left;
+}
+
+#other-settings .field {
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+}
+#other-settings .formBox form input {
+  width: auto;
+}
+
+
+/*============ 
+  this is for tab and mobile
+============*/
+
+@media only screen and (max-width: 868px) {
+  /*===========
+    account page
+  ===========*/
+  
+  .account .info {
+    flex-flow: column;
+  }
+  .account .info .field {
+    flex: 1;
+    width: 100%;
+    padding: 0;
+  }
+  .account .info .field:nth-child(2) {
+    flex: 1;
+    padding: 0;
+  }
+  .info .field .items {
+    font-size: 0.8rem;
+  }
+  .info .field .btn {
+    align-self: center;
+  }
+  .user-popup {
+    position: fixed;
+  }
+  .user-popup::after {
+    top: -8px;
+  }
+  .settings {
+    flex-flow: column;
+  }
+}

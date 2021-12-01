@@ -2,28 +2,35 @@
 <html lang="en">
 
 <head>
-	<title>RisingPhoenix Register</title>
-  {% include 'header.html' %}
+	<title>RP Register</title>
+  {% include './heads/header.html' %}
 </head>
 
 <body>
 	<header>
-      {% include 'logo.html' %}
-  <nav class="navHide">
+      {% include './heads/logo.html' %}
+    <nav class="navHide">
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('feature') }}">Features</a>
       <a href="{{ url_for('join') }}">Join us</a>
       <a href="{{ url_for('gallery') }}">Gallery</a>
-      <a href="{{ url_for('login') }}" class="btn"><i class="fas fa-user"></i> Login</a>
-  </nav>
+      {% include './heads/userbtn.html' %}
+    </nav>
   </header>
-  <div class="form">
+  <div class="formBox nopopup">
     <!-- this is for sign in  -->
-    
-    <form id="boxsign" method="POST" action="{{ url_for('register') }}" accept-charset="utf-8" >
+    <form method="POST" action="{{ url_for('register') }}" accept-charset="utf-8" >
       <h2> Create Account </h2>
       <p>Already have an account? <a href="{{ url_for('login') }}"> Login</a></p>
-      
+	    {% with messages = get_flashed_messages() %}
+	        {% if messages %}
+                {% for message in messages %}
+                <p><em class="flash">
+                    {{ message }}
+                </em></p>
+                {% endfor %}
+	        {% endif %}
+	    {% endwith %}
       <div class="field">
         <input type="text" id="username" name="username" placeholder=" " title="Username must be atleast 4 characters" pattern=".{4,}" required />
         <label for="username">Username</label>
@@ -40,14 +47,17 @@
       </div>
 
       <div class="field">
-        <input type="password" name="password" id="confirm_password" placeholder=" " onkeyup="validatePassword();" required />
+        <input type="password" name="" id="confirm_password" placeholder=" " onkeyup="validatePassword();" required />
         <label for="confirm_password">Confirm Password</label>
       </div>
-      <button class="btn" type="submit"><span class="fa fa-user"></span> Sign in</button>
+      <button class="btn" type="submit">
+        <i class="fa fa-user"></i>
+        <strong>Sign Up</strong>
+      </button>
     </form>
   </div>
-  {% include 'footer.html' %}
-  <script src="/static/js/form.js"></script>
+  <script src="/static/js/validation.js" async></script>
+  {% include './heads/footer.html' %}
 </body>
 
 </html>

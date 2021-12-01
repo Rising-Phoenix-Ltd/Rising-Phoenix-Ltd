@@ -1,0 +1,11 @@
+{% if current_user.is_authenticated: %}
+<!-- when user is logged show usermenu popup -->
+<div class="user showAcc" id="desktop">
+  <img onerror="this.src = alt" class="photo" src="" alt="/static/img/user.svg" />
+</div>
+{% else: %}
+<!-- else login popup-->
+<div class="user showLog" id="desktop">
+  <img onerror="this.src = alt" class="photo" src="" alt="/static/img/user.svg" />
+</div>
+{% endif %}

@@ -2,11 +2,11 @@
 <html>
 
 <head>
-	{% include 'header.html' %}
+	{% include 'heads/header.html' %}
 	<title>admin</title>
 	<style type="text/css" media="all">
 	form {
-		height: 512px;
+		height: 100vh;
 		display: flex;
 		flex-flow: column;
 		justify-content: center;
@@ -33,8 +33,8 @@
 		<input type="text" name="title" id="title" required/>
 		<label for="thumbnail">Thumbnail</label>
 		<input type="url" name="thumbnail" id="thumbnail" required>
-		<label for="src">Source</label>
-		<input type="url" name="src" id="src" required/>
+		<label for="source">Source</label>
+		<input type="url" name="src" id="source" required/>
 		<!-- botton -->
 		<input class="btn" type="submit" value="Add" />
 	</form>

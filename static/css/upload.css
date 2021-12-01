@@ -6,35 +6,46 @@ main form {
 	height: 100%;
 	display: flex;
 	text-align: center;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	flex-flow: column;
 }
 
 main form h2 {
-	border-bottom: 3px solid #a00;
+	border-bottom: 3px solid;
 	padding: 0 10px;
-	color: #a00;
+	color: var(--theme-color);
 }
+
+main .admin {
+  margin: 10px 0;
+}
+
 
 main form .field,
 form .fileField {
 	position: relative;
 	margin: 30px 0 0;
+	align-self: center;
+	width: 40%;
 }
 
 main form .fileField {
 	position: relative;
 	margin: 20px 0;
+	display: flex;
+	width: auto;
+	align-items: center;
 }
 
-main form input {
+main form .field input {
 	padding: 6px 10px;
+	width: 100%;
 	outline: none;
 	border: none;
 	border-bottom: 1px solid #0009;
-	width: 40vw;
 	transition: all 0.2s;
+	
 }
 
 main form .field label {
@@ -45,32 +56,57 @@ main form .field label {
 	transition: all 0.2s;
 }
 
-main form .fileField #txt {
-	font-size: revert;
+main form .fileField #filename {
+	font-size: 0.9rem;
 	color: #0009;
-	font-style: normal;
 	margin: 5px;
-	font-size: 14px;
 	padding: 2px 3px;
 	border-radius: 0;
 	border: none;
-	border-bottom: 1px solid #0009;
+	border-bottom: 1px solid;
 	background: transparent;
 }
 
-main form .fileField input:valid:not(:placeholder-shown)+#txt {
-	color: #a00;
+main form .fileField input:valid:not(:placeholder-shown)+#filename {
+	color: var(--theme-color);
 	font-weight: 700;
-	border-bottom: 2px solid #a00;
+	border-bottom: 2px solid var(--theme-color);
 }
 
+.wrap {
+  width: 40%;
+}
+.wrap .bar {
+  background: var(--light);
+  margin: 10px 0 0;
+  padding: 10px;
+  grid-gap: 5px;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+}
+.wrap .bar .status {
+  font-weight: 600;
+  color: #0009;
+  font-size: 14px;
+}
+.wrap .bar .progress {
+  width: 0%;
+  background: var(--theme-color);
+  color: var(--light);
+  border-radius: 2px;
+  text-align: center;
+}
+
+
+
 main form .btn {
-	background: #a00;
-	color: #fff;
-	border-color: #a00;
+	background: var(--theme-color);
+	color: var(--light);
+	border-color: var(--theme-color);
 	border-width: 1px;
 	border-radius: 2px;
-	padding: 3px 6px;
+	padding: 2px 6px;
 	font-weight: 400;
 }
 
@@ -81,12 +117,12 @@ main form label.btn:active {
 form .field input:focus,
 form .field input:focus:not(:placeholder-shown) {
 	border: none;
-	border-bottom: 2px solid #a00;
+	border-bottom: 2px solid var(--theme-color);
 }
 
 form .field input:focus+label,
 form .field input:not(:placeholder-shown)+label {
-	color: #a00;
+	color: var(--theme-color);
 	font-weight: 700;
 	left: 5px;
 	transform: translateY(-75%) scale(0.94);
@@ -94,47 +130,31 @@ form .field input:not(:placeholder-shown)+label {
 
 form .field .field input:invalid:not(:placeholder-shown) {
 	border: none;
-	border-bottom: 2px solid #a00;
+	border-bottom: 2px solid var(--theme-color);
 }
 
 form .field input:valid:not(:placeholder-shown) {
 	border: none;
-	border-bottom: 2px solid #a00;
+	border-bottom: 2px solid var(--theme-color);
 }
 
-form .field input:valid:not(:placeholder-shown)+label::after {
-	content: " ✓";
-	word-spacing: 10px;
-}
-
-form .add {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-form .add .btn {
-	color: #fff;
-	padding: 6px 0;
+form .btn[type="submit"] {
+	padding: 6px 10px;
 	margin: 10px 0 0;
-	font-size: 16px;
-	text-transform: uppercase;
-	background: #a00;
-	border-color: #a00;
-	display: flex;
-	width: 140px;
-	justify-content: space-evenly;
-	align-items: center;
+	border-width: 2px;
+	font-size: 1rem;
 }
 
 main form em {
 	font-size: 10px;
-	color: #fff;
+	display: block;
+	color: var(--light);
 	font-style: normal;
+	font-weight: 400;
 	margin: 5px 25%;
 	padding: 2px 3px;
 	border-radius: 2px;
-	border: 1px solid #000;
+	border: 1px solid var(--theme-color);
 	background: #c55;
 }
 
@@ -142,13 +162,19 @@ main form em span {
 	font-weight: 700;
 }
 
-@media only screen and (max-width: 500px) {
-	main form .field input {
-		width: 80vw;
+@media only screen and (max-width: 868px) {
+	main form .field {
+	  width: 80%;
 	}
-
+	.wrap {
+	  width: 80%;
+	}
+	
 	main form em {
 		margin: 2px;
 		font-size: 8px;
+	}
+	main form .btn[type="submit"] {
+	  border-width: 1px;
 	}
 }

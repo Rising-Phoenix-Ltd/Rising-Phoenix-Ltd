@@ -1,0 +1,53 @@
+<!-- this is for  user popup-->
+{% if current_user.is_authenticated: %}
+
+<section class="user-popup">
+  <nav class="user-nav">
+	<a href="{{ url_for('profile', name=current_user.name) }}" class="user-info">
+      <div>
+		  {{ current_user.name }}
+        <p>{{ current_user.email }}</p>
+      </div>
+      <img class="photo" onerror="this.src = alt" src="{{ current_user.profile_pic }}" alt="/static/img/user.svg">
+    </a>
+    <a href="{{ url_for('settings', name=current_user.name) }}">Settings <i class="fas fa-gear"></i></a>
+    <a href="{{ url_for('logout') }}">Logout <i class="fas fa-right-from-bracket"></i></a>
+  </nav>
+</section>
+
+{% else: %}
+
+<!-- this is for login popup -->
+<section class="login">
+  <div class="formBox" id="loginForm">
+  	<form method="POST" action="{{url_for('login_spl')}}" accept-charset="utf-8">
+  	  <i class="fas fa-circle-xmark cancel" id="hideLog"></i>
+		<h2>Login</h2>
+  		<p>Don't have an Account? <a href="{{url_for('register')}}"> Sign in</a></p>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+                    <p><em class="flash">
+                        {{ message }}
+                    </em></p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<div class="field">
+  			<input type="email" id="email" name="email" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please Complete your email address" required />
+  			<label for="email">Email ID</label>
+  		</div>
+  		<div class="field">
+  			<input type="password" id="password" name="password" placeholder=" " required pattern=".{8,}" title="Please Enter Correct Password" />
+  			<label for="password">Password</label>
+  		</div>
+      	<a href="{{ url_for('forgot') }}"> Forget Password? </a>
+  		<button class="btn" type="submit">
+  		  <i class="fas fa-user"></i>
+  		  <strong>Login</strong>
+  		</button>
+  	</form>
+  </div>
+</section>
+
+{% endif %}

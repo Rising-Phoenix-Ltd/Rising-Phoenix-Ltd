@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>RP Gallery</title>
+	{% include './heads/header.html' %}
+</head>
+
+<body>
+	<header>
+		{% include './heads/logo.html' %}
+		<nav class="navHide">
+			<a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('feature') }}">Features</a>
+			<a href="{{ url_for('join') }}">Join us</a>
+			<a href="{{ url_for('gallery') }}" class="active">Gallery</a>
+			{% include './heads/userbtn.html' %}
+		</nav>
+	</header>
+	{% include './heads/profile-popup.html' %}
+	<!-- this is for gallery page -->
+	<section class="gallery">
+		<div class="uploadBox">
+			<div class="title">
+				<h2>Gallery</h2>
+				<h4>
+					Upload and share your gaming moments here.
+					Note: only photos and videos are supported.
+				</h4>
+					{% if current_user.is_authenticated: %}
+					<a href="{{ url_for('gallery_upload') }}" class="btn">
+						<strong>UPLOAD</strong>
+						<i class="fas fa-upload"></i>
+					</a>
+					{% else: %}
+					<a href="{{ url_for('login') }}" class="btn">
+						<strong>LOGIN TO UPLOAD</strong>
+						<i class="fas fa-upload"></i>
+					</a>
+					{% endif %}
+					{% if current_user.id == 1 %}
+					<a href="{{ url_for('gallery_upload_admin') }}" class="btn">
+						<strong>ADMIN UPLOAD</strong>
+						<i class="fas fa-upload"></i>
+					</a>
+					{% endif %}
+				{% with messages = get_flashed_messages() %}
+	        		{% if messages %}
+                		{% for message in messages %}
+                		<p><em class="flash">
+                    		{{ message }}
+                		</em></p>
+                		{% endfor %}
+	        		{% endif %}
+	    		{% endwith %}
+			</div>
+			<img src="/static/img/gallery.svg" alt="upload-background">
+		</div>
+		<nav class="galleryNav">
+      		<a href="#vid" class="active"><i class="fas fa-video"></i> Videos</a>
+      		<a href="#pic" ><i class="fas fa-image"></i> Pictures</a>
+		</nav>
+
+		<!-- this is for video section -->
+
+    	<div id="vid" class="mainBox">
+			{% for video in videos %}
+			<div class="list">
+        		<div class="title">
+          			<h3 class="postTitle">{{ video['title'] }}</h3>
+        		</div>
+        		<iframe src="{{ video['source'] }}" class="vPlayer" allowfullscreen></iframe>
+        		<div class="userPost">
+          			<h3 class="author"><a href="{{ url_for('profile', name=video['name']) }}"></a>@{{ video['name'] }}</h3>
+					<h3 class="postDate">{{ video['date'] }}
+						{% if current_user.id == 1 %}
+						<a href="{{ url_for('gallery_vid_delete', vid_id=video['id']) }}">X</a>
+						{% endif %}
+						{{ video['time'] }}
+					</h3>
+        		</div>
+      		</div>
+			{% endfor %}
+		</div>
+
+		<!-- this is for Image Section -->
+
+    	<div id="pic" class="mainBox">
+			{% for photo in photos %}
+			<div class="list">
+        		<div class="title">
+          			<h3 class="postTitle">{{ photo['title'] }}</h3>
+        		</div>
+          		<img src="{{ photo['source'] }}" class="iPlayer" alt="thumbnail" />
+        		<div class="userPost">
+          			<h3 class="author"><a href="{{ url_for('profile', name=photo['name']) }}">@{{ photo['name'] }}</a></h3>
+          			<h3 class="postDate">{{ photo['date'] }}
+						{% if current_user.id == 1 %}
+						<a href="{{ url_for('gallery_photo_delete', photo_id=photo['id']) }}">X</a>
+						{% endif %}
+						{{ photo['time'] }}
+					</h3>
+        		</div>
+     		</div>
+			{% endfor %}
+		</div>
+	</section>
+	<script src="/static/js/gallery.js" async></script>
+	{% extends './heads/footer.html' %}
+</body>
+
+</html>

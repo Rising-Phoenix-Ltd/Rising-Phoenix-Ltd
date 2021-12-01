@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Account</title>
+  {% include './heads/header.html' %}
+</head>
+
+<body>
+  <header>
+    {% include './heads/logo.html' %}
+    <nav class="navHide">
+      <a href="/">Home</a>
+      <a href="/feature">Features</a>
+      <a href="/join">Join us</a>
+      <a href="/gallery">Gallery</a>
+      {% include './heads/userbtn.html' %}
+    </nav>
+  </header>
+  <!-- this is for usermenu & login popup-->
+  {% include './heads/profile-popup.html' %}
+  <!--  this is setting page -->
+  <h2 class="title">Settings</h2>
+  <section class="settings">
+    <nav class="settingNav">
+      <div>
+        <a href="{{ url_for('settings', name=current_user.name) }}">Account info</a>
+        <a href="{{ url_for('change_password', name=current_user.name) }}">Change Password</a>
+        <a class="active" href="{{ url_for('other_settings', name=current_user.name) }}">Other Settings</a>
+      </div>
+    </nav>
+    <div class="settingContent" id="other-settings">
+      <div class="formBox">
+        <form action="{{ url_for('other_settings_post', name=current_user.name) }}" method="POST">
+
+          <div class="field">
+            <input type="checkbox" name=""/>
+            <span>Private your profile picture messed with and you yes you</span>
+          </div>
+
+          <div class="field">
+            <input type="checkbox" name="" checked/>
+            <span>Private your email address</span>
+          </div>
+
+          <div class="field">
+            <input type="checkbox" name="" />
+            <span>Private your bio</span>
+          </div>
+
+          <div class="field">
+            <input type="checkbox" name="" />
+            <span>Enable Dark mode</span>
+          </div>
+
+          <button type="submit" class="btn">
+            <strong>Update</strong>
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="/static/js/validation.js"></script>
+  <script src="/static/js/user.js" async></script>
+  {% include './heads/footer.html' %}
+</body>
+
+</html>

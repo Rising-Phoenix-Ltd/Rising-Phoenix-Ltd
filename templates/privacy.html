@@ -3,24 +3,22 @@
 
 <head>
 	<title>Privacy || Terms to Use</title>
-	{% include 'header.html' %}
+	{% include 'heads/header.html' %}
+	<link rel="stylesheet" href="/static/css/bulb.css">
 </head>
 
 <body>
 	<header>
-		{% include 'logo.html' %}
+		{% include 'heads/logo.html' %}
 		<nav class="navHide">
 			<a href="/">Home</a>
 			<a href="/feature">Features</a>
 			<a href="/join">Join us</a>
 			<a href="/gallery">Gallery</a>
-			<a id="showbtn" class="btn"><i class="fas fa-user"></i> Login</a>
+			{% include 'heads/userbtn.html' %}
 		</nav>
 	</header>
-	<!-- this is for popup login-->
-	<section class="login">
-		<%- include('extend/popupLogin.html') -%>
-	</section>
+	{% include 'heads/profile-popup.html' %}
 	<!-- this is for privacy page -->
 	<section class="privacy">
 		<div class="bulb">
@@ -31,8 +29,8 @@
 		<button class="switch btn" type="button">ON</button>
 		<h2 class="titleOff">Coming Soon</h2>
 	</section>
-	{% include 'footer.html' %}
 	<script src="/static/js/bulb.js"></script>
+	{% include 'heads/footer.html' %}
 </body>
 
 </html>

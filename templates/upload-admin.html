@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Admin Upload</title>
+	{% include 'heads/header.html' %}
+	<link rel="stylesheet" href="/static/css/upload.css" />
+</head>
+
+<body>
+	<header>
+		{% include 'heads/logo.html' %}
+		<nav class="navHide">
+			<a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('feature') }}">Features</a>
+			<a href="{{ url_for('join') }}">Join us</a>
+			<a href="{{ url_for('gallery') }}" class="active">Gallery</a>
+			{% include 'heads/userbtn.html' %}
+		</nav>
+	</header>
+	{% include 'heads/profile-popup.html' %}
+	<!-- this is for upload section-->
+	<main>
+		<form method="POST" action="{{ url_for('gallery_upload_admin') }}" enctype="multipart/form-data" accept-charset="utf-8">
+			<h2>Gallery Album</h2>
+			<div class="field">
+				<input type="text" name="user_id" id="user_id" placeholder=" " required />
+				<label for="user_id">USER ID</label>
+			</div>
+			<div class="field">
+				<input type="text" name="post_id" id="postid" placeholder=" " required />
+				<label for="postid">POST ID</label>
+			</div>
+			<div class="field">
+				<input type="text" name="link" id="link" placeholder=" " required />
+				<label for="link">Embed link</label>
+			</div>
+			<div class="field">
+				<input type="text" name="youtube" id="ytlink" placeholder=" " />
+				<label for="ytlink">YouTube URL</label>
+			</div>
+<!--			<div class="admin">-->
+<!--			  Section:-->
+<!--				<select name="option" id="option">-->
+<!--				  <optgroup label="Select File Type">-->
+<!--					<option value="" hidden></option>-->
+<!--					<option value="Image">Image</option>-->
+<!--					<option value="Video">Video</option>-->
+<!--				  </optgroup>-->
+<!--				</select>-->
+<!--			</div>-->
+			<button class="btn" type="submit">
+        		<strong>Upload</strong>
+        		<i class="fas fa-upload"></i>
+      		</button>
+		</form>
+	</main>
+	{% extends 'heads/footer.html' %}
+	<script src="/static/js/upload.js" async></script>
+</body>
+
+</html>
